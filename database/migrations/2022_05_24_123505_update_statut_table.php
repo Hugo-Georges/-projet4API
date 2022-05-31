@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('type_reglements', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('statuts', function (Blueprint $table) {
+            $table->string('libstatuts');
         });
     }
 
@@ -26,6 +25,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_reglements');
+        Schema::table('statuts', function(Blueprint $table) {
+
+            $table->dropColumn('libstatuts');
+        });
     }
 };

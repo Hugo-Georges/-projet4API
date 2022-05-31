@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pays', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('produits', function(Blueprint $table){
+            $table->string('nomProduit');
+            $table->integer('prixUnitaire');
         });
+
+
     }
 
     /**
@@ -26,6 +28,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pays');
+        Schema::table('produits', function(Blueprint $table) {
+
+            $table->dropColumn('nomProduit');
+            $table->dropColumn('prixUnitaire');
+        });
     }
 };
